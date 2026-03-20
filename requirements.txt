@@ -1,0 +1,42 @@
+# ============================================================
+#  Project UPD — Requirements
+#  Install: pip install -r requirements.txt
+# ============================================================
+
+
+# ── Phase 1-3: Core Engine + Treatment ──────────────────────
+numpy>=1.24.0
+pandas>=2.0.0
+scipy>=1.11.0
+pydantic>=2.0.0
+loguru>=0.7.0
+
+
+# ── Notebooks + Visualization ───────────────────────────────
+jupyter>=1.0.0
+matplotlib>=3.7.0
+seaborn>=0.12.0
+ipykernel>=6.0.0
+
+
+# ── Phase 4: ML ─────────────────────────────────────────────
+scikit-learn>=1.3.0
+xgboost>=2.0.0
+# torch>=2.0.0          # Uncomment if using PyTorch
+
+
+# ── Phase 5: LLM API ────────────────────────────────────────
+openai>=1.0.0
+# anthropic>=0.20.0     # Uncomment if using Claude API
+# google-generativeai   # Uncomment if using Gemini
+python-dotenv>=1.0.0
+
+
+# ── Phase 6: Report Generation ──────────────────────────────
+reportlab>=4.0.0
+Pillow>=10.0.0            # Required by ReportLab for images
+
+
+# ── Utilities ───────────────────────────────────────────────
+openpyxl>=3.1.0           # Excel export support
+tqdm>=4.65.0              # Progress bars for batch processing

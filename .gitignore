@@ -9,3 +9,4 @@ data/processed/*
 !data/processed/.gitkeep
 dist/
 *.egg-info/
+.venv
