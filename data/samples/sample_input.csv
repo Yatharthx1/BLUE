@@ -1,0 +1,5 @@
+﻿sample_id,location,pH,TDS,hardness,turbidity,nitrates,fluoride,chlorides,dissolved_oxygen,BOD,coliform
+S001,Indore_Zone_A,7.2,310,180,0.8,32,0.9,210,6.5,1.8,0
+S002,Indore_Zone_B,6.1,620,260,3.2,51,2.1,280,3.8,5.2,4
+S003,Indore_Zone_C,7.8,490,140,0.5,28,1.0,195,7.1,1.2,0
+S004,Rural_Site_D,8.9,730,310,5.6,68,0.3,340,2.1,9.8,12

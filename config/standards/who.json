@@ -1,0 +1,16 @@
+﻿{
+  "standard": "WHO Guidelines for Drinking Water Quality 4th Ed.",
+  "region": "Global",
+  "parameters": {
+    "pH":              { "ideal": 7.0,  "permissible": [6.5, 8.5],  "unit": "dimensionless", "weight": 4 },
+    "TDS":             { "ideal": 0,    "permissible": [0, 600],     "unit": "mg/L",          "weight": 3 },
+    "hardness":        { "ideal": 0,    "permissible": [0, 500],     "unit": "mg/L",          "weight": 2 },
+    "turbidity":       { "ideal": 0,    "permissible": [0, 4],       "unit": "NTU",           "weight": 3 },
+    "nitrates":        { "ideal": 0,    "permissible": [0, 50],      "unit": "mg/L",          "weight": 5 },
+    "fluoride":        { "ideal": 0,    "permissible": [0, 1.5],     "unit": "mg/L",          "weight": 5 },
+    "chlorides":       { "ideal": 0,    "permissible": [0, 250],     "unit": "mg/L",          "weight": 3 },
+    "dissolved_oxygen":{ "ideal": 14.6, "permissible": [5, 14.6],    "unit": "mg/L",          "weight": 5 },
+    "arsenic":         { "ideal": 0,    "permissible": [0, 0.01],    "unit": "mg/L",          "weight": 10 },
+    "lead":            { "ideal": 0,    "permissible": [0, 0.01],    "unit": "mg/L",          "weight": 10 }
+  }
+}

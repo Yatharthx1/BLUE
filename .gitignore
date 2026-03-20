@@ -1,0 +1,11 @@
+﻿.env
+__pycache__/
+*.pyc
+*.pyo
+.ipynb_checkpoints/
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+dist/
+*.egg-info/

@@ -1,0 +1,16 @@
+﻿{
+  "standard": "BIS IS:10500:2012",
+  "region": "India",
+  "parameters": {
+    "pH":              { "ideal": 7.0,  "permissible": [6.5, 8.5],  "unit": "dimensionless", "weight": 4 },
+    "TDS":             { "ideal": 0,    "permissible": [0, 500],     "unit": "mg/L",          "weight": 4 },
+    "hardness":        { "ideal": 0,    "permissible": [0, 200],     "unit": "mg/L",          "weight": 2 },
+    "turbidity":       { "ideal": 0,    "permissible": [0, 1],       "unit": "NTU",           "weight": 2 },
+    "nitrates":        { "ideal": 0,    "permissible": [0, 45],      "unit": "mg/L",          "weight": 5 },
+    "fluoride":        { "ideal": 1.0,  "permissible": [0, 1.5],     "unit": "mg/L",          "weight": 5 },
+    "chlorides":       { "ideal": 0,    "permissible": [0, 250],     "unit": "mg/L",          "weight": 3 },
+    "dissolved_oxygen":{ "ideal": 14.6, "permissible": [4, 14.6],    "unit": "mg/L",          "weight": 5 },
+    "BOD":             { "ideal": 0,    "permissible": [0, 3],       "unit": "mg/L",          "weight": 5 },
+    "coliform":        { "ideal": 0,    "permissible": [0, 0],       "unit": "MPN/100mL",     "weight": 10 }
+  }
+}
