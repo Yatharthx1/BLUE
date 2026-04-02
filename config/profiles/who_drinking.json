@@ -1,0 +1,233 @@
+{
+  "profile_id": "who_drinking",
+  "name": "WHO Guidelines for Drinking Water Quality — 4th Edition",
+  "region": "Global",
+  "use_case": "drinking_water",
+
+  "_notes": {
+    "TDS":             "WHO sets no health-based guideline for TDS. 600 mg/L is aesthetic. Lower bound 50 mg/L from WHO mineral adequacy guidance.",
+    "fluoride_lower":  "WHO guideline is 1.5 mg/L upper only. Lower bound 0.5 mg/L from WHO dental caries risk guidance.",
+    "nitrates":        "WHO guideline 50 mg/L. BIS is stricter at 45 mg/L.",
+    "turbidity":       "WHO guideline 4 NTU. BIS is stricter at 1/5 NTU.",
+    "arsenic":         "WHO guideline 0.01 mg/L. Some country-level implementations use 0.05.",
+    "cadmium":         "WHO guideline 0.003 mg/L. No relaxation.",
+    "nitrites":        "WHO guideline 3 mg/L short-term, 0.2 mg/L long-term. Using stricter long-term value.",
+    "manganese":       "WHO health-based guideline 0.4 mg/L. Aesthetic concern at 0.1 mg/L."
+  },
+
+  "parameters": {
+
+    "coliform": {
+      "layer":     "hard_gate",
+      "direction": "up_bad",
+      "relaxable": false,
+      "impact":    "health",
+      "limits":    { "acceptable": 0 },
+      "unit":      "MPN/100mL",
+      "weight":    0
+    },
+
+    "arsenic": {
+      "layer":     "hard_gate",
+      "direction": "up_bad",
+      "relaxable": false,
+      "impact":    "health",
+      "limits":    { "acceptable": 0.01 },
+      "unit":      "mg/L",
+      "weight":    0
+    },
+
+    "lead": {
+      "layer":     "hard_gate",
+      "direction": "up_bad",
+      "relaxable": false,
+      "impact":    "health",
+      "limits":    { "acceptable": 0.01 },
+      "unit":      "mg/L",
+      "weight":    0
+    },
+
+    "nitrates": {
+      "layer":     "hard_gate",
+      "direction": "up_bad",
+      "relaxable": false,
+      "impact":    "health",
+      "limits":    { "acceptable": 50 },
+      "unit":      "mg/L",
+      "weight":    0
+    },
+
+    "nitrites": {
+      "layer":     "hard_gate",
+      "direction": "up_bad",
+      "relaxable": false,
+      "impact":    "health",
+      "limits":    { "acceptable": 0.2 },
+      "unit":      "mg/L",
+      "weight":    0
+    },
+
+    "cadmium": {
+      "layer":     "hard_gate",
+      "direction": "up_bad",
+      "relaxable": false,
+      "impact":    "health",
+      "limits":    { "acceptable": 0.003 },
+      "unit":      "mg/L",
+      "weight":    0
+    },
+
+    "pH": {
+      "layer":     "non_relaxable",
+      "direction": "both_bad",
+      "relaxable": false,
+      "impact":    "health",
+      "limits":    { "acceptable": [6.5, 8.5] },
+      "unit":      "dimensionless",
+      "weight":    0.15
+    },
+
+    "turbidity": {
+      "layer":     "relaxable",
+      "direction": "up_bad",
+      "relaxable": false,
+      "impact":    "aesthetic",
+      "limits":    {
+        "ideal":       0,
+        "acceptable":  4,
+        "permissible": 4
+      },
+      "unit":   "NTU",
+      "weight": 0.08
+    },
+
+    "TDS": {
+      "layer":     "relaxable",
+      "direction": "both_bad",
+      "relaxable": false,
+      "impact":    "aesthetic",
+      "limits":    {
+        "ideal":         [50, 600],
+        "acceptable":    [50, 600],
+        "permissible":   600,
+        "permissible_low": 50
+      },
+      "unit":   "mg/L",
+      "weight": 0.10
+    },
+
+    "hardness": {
+      "layer":     "relaxable",
+      "direction": "up_bad",
+      "relaxable": false,
+      "impact":    "aesthetic",
+      "limits":    {
+        "ideal":       0,
+        "acceptable":  500,
+        "permissible": 500
+      },
+      "unit":   "mg/L",
+      "weight": 0.08
+    },
+
+    "chlorides": {
+      "layer":     "relaxable",
+      "direction": "up_bad",
+      "relaxable": false,
+      "impact":    "aesthetic",
+      "limits":    {
+        "ideal":       0,
+        "acceptable":  250,
+        "permissible": 250
+      },
+      "unit":   "mg/L",
+      "weight": 0.08
+    },
+
+    "sulphate": {
+      "layer":     "relaxable",
+      "direction": "up_bad",
+      "relaxable": false,
+      "impact":    "aesthetic",
+      "limits":    {
+        "ideal":       0,
+        "acceptable":  250,
+        "permissible": 250
+      },
+      "unit":   "mg/L",
+      "weight": 0.08
+    },
+
+    "fluoride": {
+      "layer":     "relaxable",
+      "direction": "both_bad",
+      "relaxable": false,
+      "impact":    "health",
+      "limits":    {
+        "ideal":           [0.5, 1.5],
+        "acceptable":      [0.5, 1.5],
+        "permissible":     1.5,
+        "permissible_low": 0.5
+      },
+      "unit":   "mg/L",
+      "weight": 0.12
+    },
+
+    "iron": {
+      "layer":     "relaxable",
+      "direction": "up_bad",
+      "relaxable": false,
+      "impact":    "aesthetic",
+      "limits":    {
+        "ideal":       0,
+        "acceptable":  0.3,
+        "permissible": 0.3
+      },
+      "unit":   "mg/L",
+      "weight": 0.07
+    },
+
+    "manganese": {
+      "layer":     "relaxable",
+      "direction": "up_bad",
+      "relaxable": false,
+      "impact":    "aesthetic",
+      "limits":    {
+        "ideal":       0,
+        "acceptable":  0.1,
+        "permissible": 0.4
+      },
+      "unit":   "mg/L",
+      "weight": 0.07
+    },
+
+    "dissolved_oxygen": {
+      "layer":     "relaxable",
+      "direction": "down_bad",
+      "relaxable": false,
+      "impact":    "health",
+      "limits":    {
+        "ideal":       14.6,
+        "acceptable":  6.0,
+        "permissible": 5.0
+      },
+      "unit":   "mg/L",
+      "weight": 0.10
+    },
+
+    "BOD": {
+      "layer":     "relaxable",
+      "direction": "up_bad",
+      "relaxable": false,
+      "impact":    "health",
+      "limits":    {
+        "ideal":       0,
+        "acceptable":  3,
+        "permissible": 3
+      },
+      "unit":   "mg/L",
+      "weight": 0.07
+    }
+
+  }
+}
