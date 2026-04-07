@@ -1,44 +1,18 @@
-﻿# Project UPD — Water Quality Index Engine
+# React + Vite
 
-A modular Python system for computing WQI, recommending water treatments,
-and generating reports — with ML and LLM integration planned.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## Phases
-1. **WQI Engine** — Weighted parameter scoring (BIS + WHO standards)
-2. **Standards Layer** — Pluggable multi-standard support
-3. **Treatment Recommender** — Rule-based + ML-driven suggestions
-4. **LLM Integration** — Natural language explanations via API
-5. **ReportLab** — Auto-generated PDF water quality reports
+Currently, two official plugins are available:
 
-## Setup
-\\\ash
-pip install -r requirements.txt
-jupyter notebook notebooks/
-\\\
-"@
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-Write-ProjectFile "requirements.txt" @"
-# Core
-numpy>=1.24.0
-pandas>=2.0.0
-scipy>=1.11.0
+## React Compiler
 
-# Notebooks
-jupyter>=1.0.0
-matplotlib>=3.7.0
-seaborn>=0.12.0
+The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
 
-# ML (Phase 4)
-scikit-learn>=1.3.0
-# torch>=2.0.0  # Uncomment when needed
+Note: This will impact Vite dev & build performances.
 
-# LLM API (Phase 5)
-openai>=1.0.0          # or swap with anthropic / google-generativeai
-python-dotenv>=1.0.0
+## Expanding the ESLint configuration
 
-# Reports (Phase 6)
-reportlab>=4.0.0
-
-# Utilities
-pydantic>=2.0.0
-loguru>=0.7.0
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.

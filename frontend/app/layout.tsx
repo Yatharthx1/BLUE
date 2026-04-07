@@ -1,15 +1,13 @@
 import type { Metadata } from 'next';
-import { Bebas_Neue, JetBrains_Mono, Space_Mono } from 'next/font/google';
+import { Bebas_Neue, Inter } from 'next/font/google';
 import './globals.css';
-import { PerformanceProvider } from '@/lib/performanceContext';
 
 const bebas = Bebas_Neue({ weight: '400', subsets: ['latin'], variable: '--font-bebas' });
-const jetbrains = JetBrains_Mono({ subsets: ['latin'], variable: '--font-jetbrains' });
-const space = Space_Mono({ weight: ['400', '700'], subsets: ['latin'], variable: '--font-space' });
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
 export const metadata: Metadata = {
-  title: 'BLUE | Water Quality Intelligence',
-  description: 'Water holds truth. We translate it.',
+  title: 'BLUE | Water Intelligence. Redefined.',
+  description: 'Know what\'s in your water — before it\'s too late. BLUE is the AI-powered water quality intelligence platform.',
 };
 
 export default function RootLayout({
@@ -18,11 +16,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${bebas.variable} ${jetbrains.variable} ${space.variable}`}>
-      <body className={`font-jetbrains antialiased`}>
-        <PerformanceProvider>
-          {children}
-        </PerformanceProvider>
+    <html lang="en" className={`${bebas.variable} ${inter.variable}`}>
+      <body className="antialiased" style={{ margin: 0, padding: 0, background: '#020617' }}>
+        {children}
       </body>
     </html>
   );
