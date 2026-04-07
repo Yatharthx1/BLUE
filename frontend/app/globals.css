@@ -4,20 +4,33 @@
 
 @layer base {
   :root {
-    --bg: #020408;
-    --glow: #00FFD1;
-    --warning: #FF6B2B;
-    --text: #E8F4F8;
-    --muted: #4A6B7A;
-    --organism-membrane: #0A2030;
+    --bg: #020617;
+    --blue-primary: #0EA5E9;
+    --blue-accent: #22D3EE;
+    --blue-light: #BAE6FD;
+    --text: #FFFFFF;
+    --text-muted: rgba(255, 255, 255, 0.6);
   }
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
 body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
   background-color: var(--bg);
   color: var(--text);
-  margin: 0;
-  overflow: hidden;
+  font-family: var(--font-inter), 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body::-webkit-scrollbar {
@@ -28,8 +41,12 @@ body {
   scrollbar-width: none;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+/* Utility for the glow pulse on the CTA button */
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(14, 165, 233, 0.2), inset 0 0 20px rgba(14, 165, 233, 0.05);
+  }
+  50% {
+    box-shadow: 0 0 35px rgba(14, 165, 233, 0.35), inset 0 0 25px rgba(14, 165, 233, 0.1);
   }
 }
