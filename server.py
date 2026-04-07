@@ -150,13 +150,16 @@ _PARAM_KEY_MAP: dict[str, dict[str, str]] = {
 
 _DISPLAY_NAMES = {
     "nitrates": "Nitrates",
+    "nitrite": "Nitrite",
     "nitrites": "Nitrite",
+    "ammonia": "Ammonia",
     "chlorides": "Chlorides",
     "sulphate": "Sulphate",
     "turbidity": "Turbidity",
     "hardness": "Hardness",
     "fluoride": "Fluoride",
     "iron": "Iron",
+    "selenium": "Selenium",
     "arsenic": "Arsenic",
     "lead": "Lead",
     "coliform": "Coliform",

@@ -12,7 +12,10 @@
     "arsenic":         "WHO guideline 0.01 mg/L. Some country-level implementations use 0.05.",
     "cadmium":         "WHO guideline 0.003 mg/L. No relaxation.",
     "nitrites":        "WHO guideline 3 mg/L short-term, 0.2 mg/L long-term. Using stricter long-term value.",
-    "manganese":       "WHO health-based guideline 0.4 mg/L. Aesthetic concern at 0.1 mg/L."
+    "manganese":       "WHO health-based guideline 0.4 mg/L. Aesthetic concern at 0.1 mg/L.",
+    "mercury":         "WHO 4th Edition Table A3.3 sets 0.006 mg/L for inorganic mercury. Included here as a health-based hard gate.",
+    "dissolved_oxygen":"WHO GDWQ does not set a drinking-water health-based guideline for dissolved oxygen. This is a supplementary WQI hygiene indicator, not a WHO compliance limit.",
+    "BOD":             "WHO GDWQ does not set a drinking-water health-based guideline for BOD. This is a supplementary WQI hygiene indicator, not a WHO compliance limit."
   },
 
   "parameters": {
@@ -73,6 +76,16 @@
       "relaxable": false,
       "impact":    "health",
       "limits":    { "acceptable": 0.003 },
+      "unit":      "mg/L",
+      "weight":    0
+    },
+
+    "Mercury": {
+      "layer":     "hard_gate",
+      "direction": "up_bad",
+      "relaxable": false,
+      "impact":    "health",
+      "limits":    { "acceptable": 0.006 },
       "unit":      "mg/L",
       "weight":    0
     },

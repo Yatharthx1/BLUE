@@ -1,302 +1,303 @@
 {
   "profile_id": "fao_agriculture",
   "name": "FAO Agricultural Water Quality",
-  "standard": "FAO Irrigation Water Quality Guidelines — Ayers & Westcot (1985); FAO Animal Production & Health Paper 68",
-  "version": "1.1",
+  "standard": "FAO Irrigation Water Quality Guidelines - Ayers & Westcot (1985); supplementary engineering screening values noted where FAO does not provide a primary threshold",
+  "version": "1.2",
   "use_case": "agriculture",
 
   "_notes": {
-    "SAR":        "Derived metric. Auto-computed from Na/Ca/Mg by derived_metrics.py if not passed directly. Formula: Na / sqrt((Ca+Mg)/2), all in meq/L.",
-    "EC":         "Primary salinity indicator. FAO restriction: <0.7 none, 0.7–3.0 slight/moderate, >3.0 severe. Non-relaxable — breach → NON_COMPLIANT.",
-    "hard_gates": "Heavy metals (As, Cd, Pb, Hg, Se) — breach → UNSAFE, no WQI computed.",
-    "dual_use":   "Profile targets irrigation. Livestock thresholds differ for TDS/Chloride/Nitrate — stored in livestock_limits for reference; runtime use_case routing to be added."
+    "SAR": "Derived metric. Auto-computed from Na/Ca/Mg by derived_metrics.py if not passed directly. Formula: Na / sqrt((Ca+Mg)/2), all in meq/L.",
+    "EC": "Primary salinity indicator. FAO restriction: <0.7 none, 0.7-3.0 slight/moderate, >3.0 severe. Non-relaxable - breach -> NON_COMPLIANT.",
+    "hard_gates": "Heavy metals (As, Cd, Pb, Hg, Se) - breach -> UNSAFE, no WQI computed.",
+    "dual_use": "Profile targets irrigation. Livestock thresholds differ for TDS/Chloride/Nitrate - stored in livestock_limits for reference; runtime use_case routing to be added.",
+    "Sulfate": "Ayers & Westcot (1985) does not list sulfate as a primary irrigation screening parameter. These sulfate values are retained as supplementary engineering thresholds rather than FAO core limits.",
+    "Manganese": "FAO Table 3 uses 0.2 mg/L as the recommended irrigation maximum for manganese. This profile treats 0.2 mg/L as the upper bound and does not add a more lenient FAO tier.",
+    "Zinc": "FAO Table 3 uses 2.0 mg/L as the recommended irrigation maximum for zinc. This profile caps the permissible tier at that value."
   },
 
   "parameters": {
-
     "pH": {
-      "layer":     "non_relaxable",
+      "layer": "non_relaxable",
       "direction": "both_bad",
       "relaxable": false,
-      "impact":    "soil_chemistry_corrosion",
-      "unit":      "pH units",
-      "weight":    0,
+      "impact": "soil_chemistry_corrosion",
+      "unit": "pH units",
+      "weight": 0,
       "limits": {
-        "ideal":      [6.5, 7.5],
+        "ideal": [6.5, 7.5],
         "acceptable": [6.0, 8.4]
       }
     },
 
     "EC": {
-      "layer":     "non_relaxable",
+      "layer": "non_relaxable",
       "direction": "up_bad",
       "relaxable": false,
-      "impact":    "salinity_hazard",
-      "unit":      "dS/m",
-      "weight":    0,
+      "impact": "salinity_hazard",
+      "unit": "dS/m",
+      "weight": 0,
       "limits": {
-        "ideal":      0.3,
+        "ideal": 0.3,
         "acceptable": 0.7
       }
     },
 
     "SAR": {
-      "layer":     "non_relaxable",
+      "layer": "non_relaxable",
       "direction": "up_bad",
       "relaxable": false,
-      "impact":    "sodium_permeability_hazard",
-      "unit":      "dimensionless",
-      "weight":    0,
-      "derived":   true,
+      "impact": "sodium_permeability_hazard",
+      "unit": "dimensionless",
+      "weight": 0,
+      "derived": true,
       "derived_from": ["Na", "Ca", "Mg"],
       "limits": {
-        "ideal":      1.0,
+        "ideal": 1.0,
         "acceptable": 3.0
       }
     },
 
     "TDS": {
-      "layer":     "relaxable",
+      "layer": "relaxable",
       "direction": "up_bad",
       "relaxable": true,
-      "impact":    "salinity_osmotic_stress",
-      "unit":      "mg/L",
-      "weight":    0.10,
+      "impact": "salinity_osmotic_stress",
+      "unit": "mg/L",
+      "weight": 0.10,
       "limits": {
-        "ideal":       450,
-        "acceptable":  1000,
+        "ideal": 450,
+        "acceptable": 1000,
         "permissible": 2000
       },
       "livestock_limits": {
-        "ideal":       1000,
-        "acceptable":  3000,
+        "ideal": 1000,
+        "acceptable": 3000,
         "permissible": 7000
       }
     },
 
     "Boron": {
-      "layer":     "relaxable",
+      "layer": "relaxable",
       "direction": "up_bad",
       "relaxable": true,
-      "impact":    "specific_ion_toxicity",
-      "unit":      "mg/L",
-      "weight":    0.10,
+      "impact": "specific_ion_toxicity",
+      "unit": "mg/L",
+      "weight": 0.10,
       "limits": {
-        "ideal":       0.3,
-        "acceptable":  0.7,
+        "ideal": 0.3,
+        "acceptable": 0.7,
         "permissible": 3.0
       }
     },
 
     "Chloride": {
-      "layer":     "relaxable",
+      "layer": "relaxable",
       "direction": "up_bad",
       "relaxable": true,
-      "impact":    "specific_ion_toxicity",
-      "unit":      "mg/L",
-      "weight":    0.10,
+      "impact": "specific_ion_toxicity",
+      "unit": "mg/L",
+      "weight": 0.10,
       "limits": {
-        "ideal":       71,
-        "acceptable":  142,
+        "ideal": 71,
+        "acceptable": 142,
         "permissible": 355
       },
       "livestock_limits": {
-        "ideal":       400,
-        "acceptable":  1500,
+        "ideal": 400,
+        "acceptable": 1500,
         "permissible": 3000
       }
     },
 
     "Sodium": {
-      "layer":     "relaxable",
+      "layer": "relaxable",
       "direction": "up_bad",
       "relaxable": true,
-      "impact":    "specific_ion_toxicity",
-      "unit":      "mg/L",
-      "weight":    0.10,
+      "impact": "specific_ion_toxicity",
+      "unit": "mg/L",
+      "weight": 0.10,
       "limits": {
-        "ideal":       35,
-        "acceptable":  69,
+        "ideal": 35,
+        "acceptable": 69,
         "permissible": 207
       }
     },
 
     "Nitrate_N": {
-      "layer":     "relaxable",
+      "layer": "relaxable",
       "direction": "up_bad",
       "relaxable": true,
-      "impact":    "excessive_vegetative_growth",
-      "unit":      "mg/L as N",
-      "weight":    0.08,
+      "impact": "excessive_vegetative_growth",
+      "unit": "mg/L as N",
+      "weight": 0.08,
       "limits": {
-        "ideal":       2,
-        "acceptable":  5,
+        "ideal": 2,
+        "acceptable": 5,
         "permissible": 30
       },
       "livestock_limits": {
-        "ideal":       20,
-        "acceptable":  44,
+        "ideal": 20,
+        "acceptable": 44,
         "permissible": 100
       }
     },
 
     "Bicarbonate": {
-      "layer":     "relaxable",
+      "layer": "relaxable",
       "direction": "up_bad",
       "relaxable": true,
-      "impact":    "permeability_adj_sar",
-      "unit":      "mg/L",
-      "weight":    0.08,
+      "impact": "permeability_adj_sar",
+      "unit": "mg/L",
+      "weight": 0.08,
       "limits": {
-        "ideal":       30,
-        "acceptable":  90,
+        "ideal": 30,
+        "acceptable": 90,
         "permissible": 518
       }
     },
 
     "Sulfate": {
-      "layer":     "relaxable",
+      "layer": "relaxable",
       "direction": "up_bad",
       "relaxable": true,
-      "impact":    "soil_permeability",
-      "unit":      "mg/L",
-      "weight":    0.06,
+      "impact": "soil_permeability",
+      "unit": "mg/L",
+      "weight": 0.06,
       "limits": {
-        "ideal":       100,
-        "acceptable":  500,
+        "ideal": 100,
+        "acceptable": 500,
         "permissible": 1000
       }
     },
 
     "Iron": {
-      "layer":     "relaxable",
+      "layer": "relaxable",
       "direction": "up_bad",
       "relaxable": true,
-      "impact":    "plugging_staining",
-      "unit":      "mg/L",
-      "weight":    0.05,
+      "impact": "plugging_staining",
+      "unit": "mg/L",
+      "weight": 0.05,
       "limits": {
-        "ideal":       0.1,
-        "acceptable":  0.5,
+        "ideal": 0.1,
+        "acceptable": 0.5,
         "permissible": 5.0
       }
     },
 
     "Manganese": {
-      "layer":     "relaxable",
+      "layer": "relaxable",
       "direction": "up_bad",
       "relaxable": true,
-      "impact":    "plugging",
-      "unit":      "mg/L",
-      "weight":    0.04,
+      "impact": "plugging",
+      "unit": "mg/L",
+      "weight": 0.04,
       "limits": {
-        "ideal":       0.05,
-        "acceptable":  0.2,
-        "permissible": 1.5
+        "ideal": 0.05,
+        "acceptable": 0.2,
+        "permissible": 0.2
       }
     },
 
     "Zinc": {
-      "layer":     "relaxable",
+      "layer": "relaxable",
       "direction": "up_bad",
       "relaxable": true,
-      "impact":    "phytotoxicity",
-      "unit":      "mg/L",
-      "weight":    0.04,
+      "impact": "phytotoxicity",
+      "unit": "mg/L",
+      "weight": 0.04,
       "limits": {
-        "ideal":       0.2,
-        "acceptable":  1.0,
-        "permissible": 5.0
+        "ideal": 0.2,
+        "acceptable": 1.0,
+        "permissible": 2.0
       }
     },
 
     "Copper": {
-      "layer":     "relaxable",
+      "layer": "relaxable",
       "direction": "up_bad",
       "relaxable": true,
-      "impact":    "phytotoxicity",
-      "unit":      "mg/L",
-      "weight":    0.03,
+      "impact": "phytotoxicity",
+      "unit": "mg/L",
+      "weight": 0.03,
       "limits": {
-        "ideal":       0.01,
-        "acceptable":  0.05,
+        "ideal": 0.01,
+        "acceptable": 0.05,
         "permissible": 0.2
       }
     },
 
     "Fluoride": {
-      "layer":     "relaxable",
+      "layer": "relaxable",
       "direction": "up_bad",
       "relaxable": true,
-      "impact":    "fluorosis_livestock",
-      "unit":      "mg/L",
-      "weight":    0.04,
+      "impact": "fluorosis_livestock",
+      "unit": "mg/L",
+      "weight": 0.04,
       "limits": {
-        "ideal":       0.5,
-        "acceptable":  1.0,
+        "ideal": 0.5,
+        "acceptable": 1.0,
         "permissible": 2.0
       }
     },
 
     "Arsenic": {
-      "layer":     "hard_gate",
+      "layer": "hard_gate",
       "direction": "up_bad",
       "relaxable": false,
-      "impact":    "crop_toxicity_soil_accumulation",
-      "unit":      "mg/L",
-      "weight":    0,
+      "impact": "crop_toxicity_soil_accumulation",
+      "unit": "mg/L",
+      "weight": 0,
       "limits": {
         "acceptable": 0.1
       }
     },
 
     "Cadmium": {
-      "layer":     "hard_gate",
+      "layer": "hard_gate",
       "direction": "up_bad",
       "relaxable": false,
-      "impact":    "soil_accumulation_food_chain",
-      "unit":      "mg/L",
-      "weight":    0,
+      "impact": "soil_accumulation_food_chain",
+      "unit": "mg/L",
+      "weight": 0,
       "limits": {
         "acceptable": 0.01
       }
     },
 
     "Lead": {
-      "layer":     "hard_gate",
+      "layer": "hard_gate",
       "direction": "up_bad",
       "relaxable": false,
-      "impact":    "soil_accumulation_livestock_toxicity",
-      "unit":      "mg/L",
-      "weight":    0,
+      "impact": "soil_accumulation_livestock_toxicity",
+      "unit": "mg/L",
+      "weight": 0,
       "limits": {
         "acceptable": 5.0
       }
     },
 
     "Mercury": {
-      "layer":     "hard_gate",
+      "layer": "hard_gate",
       "direction": "up_bad",
       "relaxable": false,
-      "impact":    "crop_soil_livestock_toxicity",
-      "unit":      "mg/L",
-      "weight":    0,
+      "impact": "crop_soil_livestock_toxicity",
+      "unit": "mg/L",
+      "weight": 0,
       "limits": {
         "acceptable": 0.002
       }
     },
 
     "Selenium": {
-      "layer":     "hard_gate",
+      "layer": "hard_gate",
       "direction": "up_bad",
       "relaxable": false,
-      "impact":    "phytotoxicity_selenosis",
-      "unit":      "mg/L",
-      "weight":    0,
+      "impact": "phytotoxicity_selenosis",
+      "unit": "mg/L",
+      "weight": 0,
       "limits": {
         "acceptable": 0.02
       }
     }
-
   }
 }

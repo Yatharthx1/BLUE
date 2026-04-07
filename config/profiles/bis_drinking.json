@@ -1,195 +1,239 @@
 {
   "profile_id": "bis_drinking",
-  "name": "BIS IS:10500:2012 — Drinking Water",
+  "name": "BIS IS:10500:2012 - Drinking Water",
   "region": "India",
   "use_case": "drinking_water",
 
   "_notes": {
-    "fluoride_lower": "BIS specifies no lower limit. 0.5 mg/L derived from WHO/dental guidelines (below = dental caries risk).",
-    "TDS_lower":      "BIS specifies no lower limit. 50 mg/L derived from WHO (below = demineralized, mineral leaching risk).",
-    "iron_no_relax":  "BIS Table 2 note: iron permissible 1.0 only where alternate source unavailable. Treated as relaxable here.",
-    "arsenic":        "BIS IS:10500 acceptable = 0.01 mg/L. Some amendments cite 0.05 — using the stricter 0.01."
+    "fluoride_lower": "BIS specifies no lower limit. 0.5 mg/L is derived from WHO and dental guidance for low-fluoride risk.",
+    "TDS_lower": "BIS specifies no lower limit. 50 mg/L is derived from mineral adequacy guidance for very low TDS water.",
+    "iron_no_relax": "BIS IS:10500:2012 sets iron at 0.3 mg/L with no relaxation. This profile follows the 2012 revision rather than the older 1991 alternate-source allowance.",
+    "arsenic": "BIS IS:10500 acceptable = 0.01 mg/L. Some amendments cite 0.05; this profile uses the stricter value.",
+    "dissolved_oxygen": "BIS IS:10500 does not set a drinking-water health-based guideline for dissolved oxygen. This is retained as a supplementary WQI hygiene indicator, not a BIS compliance limit.",
+    "BOD": "BIS IS:10500 does not set a drinking-water health-based guideline for BOD. This is retained as a supplementary WQI hygiene indicator, not a BIS compliance limit."
   },
 
   "parameters": {
-
     "coliform": {
-      "layer":     "hard_gate",
+      "layer": "hard_gate",
       "direction": "up_bad",
       "relaxable": false,
-      "impact":    "health",
-      "limits":    { "acceptable": 0 },
-      "unit":      "MPN/100mL",
-      "weight":    0
+      "impact": "health",
+      "limits": { "acceptable": 0 },
+      "unit": "MPN/100mL",
+      "weight": 0
     },
 
     "arsenic": {
-      "layer":     "hard_gate",
+      "layer": "hard_gate",
       "direction": "up_bad",
       "relaxable": false,
-      "impact":    "health",
-      "limits":    { "acceptable": 0.01 },
-      "unit":      "mg/L",
-      "weight":    0
+      "impact": "health",
+      "limits": { "acceptable": 0.01 },
+      "unit": "mg/L",
+      "weight": 0
     },
 
     "lead": {
-      "layer":     "hard_gate",
+      "layer": "hard_gate",
       "direction": "up_bad",
       "relaxable": false,
-      "impact":    "health",
-      "limits":    { "acceptable": 0.01 },
-      "unit":      "mg/L",
-      "weight":    0
+      "impact": "health",
+      "limits": { "acceptable": 0.01 },
+      "unit": "mg/L",
+      "weight": 0
     },
 
     "nitrates": {
-      "layer":     "hard_gate",
+      "layer": "hard_gate",
       "direction": "up_bad",
       "relaxable": false,
-      "impact":    "health",
-      "limits":    { "acceptable": 45 },
-      "unit":      "mg/L",
-      "weight":    0
+      "impact": "health",
+      "limits": { "acceptable": 45 },
+      "unit": "mg/L",
+      "weight": 0
+    },
+
+    "nitrite": {
+      "layer": "hard_gate",
+      "direction": "up_bad",
+      "relaxable": false,
+      "impact": "health",
+      "limits": { "acceptable": 1.0 },
+      "unit": "mg/L",
+      "weight": 0
+    },
+
+    "ammonia": {
+      "layer": "hard_gate",
+      "direction": "up_bad",
+      "relaxable": false,
+      "impact": "health",
+      "limits": { "acceptable": 0.5 },
+      "unit": "mg/L as NH3-N",
+      "weight": 0
+    },
+
+    "selenium": {
+      "layer": "hard_gate",
+      "direction": "up_bad",
+      "relaxable": false,
+      "impact": "health",
+      "limits": { "acceptable": 0.01 },
+      "unit": "mg/L",
+      "weight": 0
     },
 
     "pH": {
-      "layer":     "non_relaxable",
+      "layer": "non_relaxable",
       "direction": "both_bad",
       "relaxable": false,
-      "impact":    "health",
-      "limits":    { "acceptable": [6.5, 8.5] },
-      "unit":      "dimensionless",
-      "weight":    0.15
+      "impact": "health",
+      "limits": { "acceptable": [6.5, 8.5] },
+      "unit": "dimensionless",
+      "weight": 0.15
     },
 
     "turbidity": {
-      "layer":     "relaxable",
+      "layer": "relaxable",
       "direction": "up_bad",
       "relaxable": true,
-      "impact":    "aesthetic",
-      "limits":    {
-        "ideal":       0,
-        "acceptable":  1,
+      "impact": "aesthetic",
+      "limits": {
+        "ideal": 0,
+        "acceptable": 1,
         "permissible": 5
       },
-      "unit":   "NTU",
+      "unit": "NTU",
       "weight": 0.08
     },
 
     "TDS": {
-      "layer":     "relaxable",
+      "layer": "relaxable",
       "direction": "both_bad",
       "relaxable": true,
-      "impact":    "health",
-      "limits":    {
-        "ideal":       [50, 500],
-        "acceptable":  [50, 500],
+      "impact": "health",
+      "limits": {
+        "ideal": [50, 500],
+        "acceptable": [50, 500],
         "permissible": 2000,
         "permissible_low": 50
       },
-      "unit":   "mg/L",
+      "unit": "mg/L",
       "weight": 0.15
     },
 
     "hardness": {
-      "layer":     "relaxable",
+      "layer": "relaxable",
       "direction": "up_bad",
       "relaxable": true,
-      "impact":    "aesthetic",
-      "limits":    {
-        "ideal":       0,
-        "acceptable":  200,
+      "impact": "aesthetic",
+      "limits": {
+        "ideal": 0,
+        "acceptable": 200,
         "permissible": 600
       },
-      "unit":   "mg/L",
+      "unit": "mg/L",
       "weight": 0.08
     },
 
     "chlorides": {
-      "layer":     "relaxable",
+      "layer": "relaxable",
       "direction": "up_bad",
       "relaxable": true,
-      "impact":    "aesthetic",
-      "limits":    {
-        "ideal":       0,
-        "acceptable":  250,
+      "impact": "aesthetic",
+      "limits": {
+        "ideal": 0,
+        "acceptable": 250,
         "permissible": 1000
       },
-      "unit":   "mg/L",
+      "unit": "mg/L",
       "weight": 0.08
     },
 
     "sulphate": {
-      "layer":     "relaxable",
+      "layer": "relaxable",
       "direction": "up_bad",
       "relaxable": true,
-      "impact":    "aesthetic",
-      "limits":    {
-        "ideal":       0,
-        "acceptable":  200,
+      "impact": "aesthetic",
+      "limits": {
+        "ideal": 0,
+        "acceptable": 200,
         "permissible": 400
       },
-      "unit":   "mg/L",
+      "unit": "mg/L",
       "weight": 0.08
     },
 
     "fluoride": {
-      "layer":     "relaxable",
+      "layer": "relaxable",
       "direction": "both_bad",
       "relaxable": true,
-      "impact":    "health",
-      "limits":    {
-        "ideal":         [0.5, 1.0],
-        "acceptable":    [0.5, 1.0],
-        "permissible":   1.5,
+      "impact": "health",
+      "limits": {
+        "ideal": [0.5, 1.0],
+        "acceptable": [0.5, 1.0],
+        "permissible": 1.5,
         "permissible_low": 0.5
       },
-      "unit":   "mg/L",
+      "unit": "mg/L",
       "weight": 0.12
     },
 
     "iron": {
-      "layer":     "relaxable",
+      "layer": "relaxable",
       "direction": "up_bad",
-      "relaxable": true,
-      "impact":    "aesthetic",
-      "limits":    {
-        "ideal":       0,
-        "acceptable":  0.3,
-        "permissible": 1.0
+      "relaxable": false,
+      "impact": "aesthetic",
+      "limits": {
+        "ideal": 0,
+        "acceptable": 0.3,
+        "permissible": 0.3
       },
-      "unit":   "mg/L",
+      "unit": "mg/L",
       "weight": 0.08
     },
 
+    "manganese": {
+      "layer": "relaxable",
+      "direction": "up_bad",
+      "relaxable": true,
+      "impact": "aesthetic",
+      "limits": {
+        "ideal": 0,
+        "acceptable": 0.1,
+        "permissible": 0.3
+      },
+      "unit": "mg/L",
+      "weight": 0.07
+    },
+
     "dissolved_oxygen": {
-      "layer":     "relaxable",
+      "layer": "relaxable",
       "direction": "down_bad",
       "relaxable": true,
-      "impact":    "health",
-      "limits":    {
-        "ideal":       14.6,
-        "acceptable":  6.0,
+      "impact": "health",
+      "limits": {
+        "ideal": 14.6,
+        "acceptable": 6.0,
         "permissible": 4.0
       },
-      "unit":   "mg/L",
+      "unit": "mg/L",
       "weight": 0.10
     },
 
     "BOD": {
-      "layer":     "relaxable",
+      "layer": "relaxable",
       "direction": "up_bad",
       "relaxable": true,
-      "impact":    "health",
-      "limits":    {
-        "ideal":       0,
-        "acceptable":  3,
+      "impact": "health",
+      "limits": {
+        "ideal": 0,
+        "acceptable": 3,
         "permissible": 5
       },
-      "unit":   "mg/L",
+      "unit": "mg/L",
       "weight": 0.08
     }
-
   }
 }
