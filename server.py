@@ -148,22 +148,6 @@ _PARAM_KEY_MAP: dict[str, dict[str, str]] = {
     },
 }
 
-_CONFIDENCE_EXPECTED_PARAMS: dict[str, list[str]] = {
-    "bis_drinking": [
-        "coliform", "arsenic", "lead", "nitrates", "pH", "turbidity", "TDS",
-        "hardness", "chlorides", "sulphate", "fluoride", "iron", "dissolved_oxygen", "BOD",
-    ],
-    "fao_agriculture": [
-        "pH", "EC", "TDS", "SAR", "Sodium", "Chloride", "Boron", "Bicarbonate", "Nitrate_N", "Iron",
-    ],
-    "industrial": [
-        "pH", "Alkalinity", "Chloride", "TDS", "Hardness", "Silica", "Iron", "DO", "Sulfate", "Turbidity", "COD",
-    ],
-    "aquaculture": [
-        "pH", "DO", "Temperature", "Ammonia_N", "Nitrite", "Nitrate", "CO2", "BOD", "Turbidity", "Hardness", "Alkalinity",
-    ],
-}
-
 _DISPLAY_NAMES = {
     "nitrates": "Nitrates",
     "nitrites": "Nitrite",
@@ -182,6 +166,7 @@ _DISPLAY_NAMES = {
     "SAR": "SAR",
     "Sodium": "Sodium",
     "Chloride": "Chloride",
+    "Chlorine": "Chlorine",
     "Boron": "Boron",
     "Bicarbonate": "Bicarbonate",
     "Sulfate": "Sulfate",
@@ -190,10 +175,19 @@ _DISPLAY_NAMES = {
     "COD": "COD",
     "CO2": "Free CO2",
     "Temperature": "Temperature",
-    "Ammonia_N": "Ammonia",
+    "Ammonia_N": "Ammonia-N",
     "Nitrate_N": "Nitrate-N",
-    "H2S": "Hydrogen Sulfide",
+    "Nitrate": "Nitrate",
+    "Nitrite": "Nitrite",
+    "H2S": "H2S",
+    "Copper": "Copper",
+    "Zinc": "Zinc",
+    "Mercury": "Mercury",
+    "Manganese": "Manganese",
+    "Cadmium": "Cadmium",
+    "Selenium": "Selenium",
     "Oil_Grease": "Oil & Grease",
+    "Phosphate": "Phosphate",
     "BOD": "BOD",
 }
 
@@ -341,7 +335,7 @@ def _frontend_param_zone(sub_zone: str) -> str:
 def _build_confidence_details(result: dict, profile_id: str, profile_cfg: dict) -> dict[str, Any]:
     params_cfg = profile_cfg.get("parameters", {})
     sub_indices = result.get("sub_indices", {})
-    expected_params = _CONFIDENCE_EXPECTED_PARAMS.get(profile_id, list(params_cfg.keys()))
+    expected_params = list(params_cfg.keys())
     missing_params: list[str] = []
 
     for param in expected_params:
@@ -380,7 +374,7 @@ def _build_confidence_details(result: dict, profile_id: str, profile_cfg: dict) 
 
 def _build_frontend_param_defs(profile_id: str, profile_cfg: dict) -> list[dict[str, str]]:
     params_cfg = profile_cfg.get("parameters", {})
-    param_ids = _CONFIDENCE_EXPECTED_PARAMS.get(profile_id, list(params_cfg.keys()))
+    param_ids = list(params_cfg.keys())
     defs: list[dict[str, str]] = []
 
     for param_id in param_ids:
