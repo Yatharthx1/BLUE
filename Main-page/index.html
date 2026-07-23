@@ -5,253 +5,181 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BLUE — Water Quality Analysis</title>
   <meta name="referrer" content="strict-origin-when-cross-origin">
-  <meta name="blue-api-base" content="https://blue-n2sh.onrender.com/">
-  <meta http-equiv="X-Content-Type-Options" content="nosniff">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='22' fill='%232b7fff'/%3E%3C/svg%3E">
+  <meta name="blue-api-base" content="https://blue-n2sh.onrender.com">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@300;400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="page-enter">
 
-  <!-- ═══ HEADER ═══ -->
-  <header class="header">
-    <div class="header-inner">
-      <div class="logo">
-        <span class="logo-mark">BLUE</span>
-        <div class="logo-divider"></div>
-        <span class="logo-sub">Water Quality Analysis</span>
+  <!-- Radial Background Spotlights via CSS -->
+
+  <main class="bento-layout">
+    
+    <!-- CELL 1: Hero -->
+    <div class="bento-cell cell-hero stagger-1">
+      <div class="hero-top">
+        <div class="logo">
+          <svg width="28" height="28" viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="32" fill="url(#cyan-grad)"/></svg>
+          <span class="logo-text">BLUE</span>
+        </div>
+        <div class="nav-label" id="activeProfileLabel">Drinking Water</div>
       </div>
-      <nav class="header-nav">
-        <span class="nav-label" id="activeProfileLabel">Drinking Water</span>
-      </nav>
+      <div class="hero-content">
+        <h1 class="hero-title">Water Quality<br><span class="text-gradient">Intelligence</span></h1>
+        <p class="hero-subtitle">Multi-standard compliance and WQI scoring engine.</p>
+      </div>
     </div>
-  </header>
 
-  <!-- ═══ MAIN ═══ -->
-  <main class="main">
-
-    <!-- Hero -->
-    <section class="hero">
-      <p class="hero-eyebrow">Analysis Interface</p>
-      <h1 class="hero-headline">Water Quality<br><em>Index Engine</em></h1>
-      <p class="hero-desc">
-        Multi-standard compliance — hard-gate routing with five-zone WQI scoring across BIS, WHO, FAO, and sector-specific profiles.
-      </p>
-    </section>
-
-    <!-- Profile Selection -->
-    <section class="profile-section" aria-label="Select analysis profile">
-      <div class="section-header">
-        <span class="section-label">Select Profile</span>
-        <span class="section-hint">Determines parameter set and compliance standard</span>
+    <!-- CELL 2: Profiles -->
+    <div class="bento-cell cell-profiles stagger-2">
+      <div class="cell-header">
+        <h2>Evaluation Profile</h2>
+        <p>Select strictness thresholds</p>
       </div>
-      <div class="profile-grid" id="profileGrid">
-
+      <div class="profile-bento-grid" id="profileGrid">
         <button class="profile-card active" data-profile="drinking" aria-pressed="true" onclick="selectProfile(this,'drinking')">
-          <div class="pc-badge" style="--badge-color: var(--blue)">DW</div>
-          <div class="pc-body">
-            <div class="pc-name">Drinking Water</div>
-            <div class="pc-std">BIS IS:10500 · WHO 4th Edition</div>
-          </div>
-          <div class="pc-arrow">&#8250;</div>
+          <div class="pc-icon-wrapper" style="--c: #06b6d4;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg></div>
+          <span class="pc-title">Drinking</span>
         </button>
 
         <button class="profile-card" data-profile="agriculture" aria-pressed="false" onclick="selectProfile(this,'agriculture')">
-          <div class="pc-badge" style="--badge-color: var(--green)">AG</div>
-          <div class="pc-body">
-            <div class="pc-name">Agriculture</div>
-            <div class="pc-std">FAO Ayers &amp; Westcot 1985</div>
-          </div>
-          <div class="pc-arrow">&#8250;</div>
+          <div class="pc-icon-wrapper" style="--c: #10b981;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 20A7 7 0 0 1 4 13V4a7 7 0 0 1 7 7 7 7 0 0 1 7-7v9a7 7 0 0 1-7 7z"/></svg></div>
+          <span class="pc-title">Agriculture</span>
         </button>
 
         <button class="profile-card" data-profile="industrial" aria-pressed="false" onclick="selectProfile(this,'industrial')">
-          <div class="pc-badge" style="--badge-color: var(--amber)">IN</div>
-          <div class="pc-body">
-            <div class="pc-name">Industrial</div>
-            <div class="pc-std">IS:2490 · BIS Effluent Standards</div>
-          </div>
-          <div class="pc-arrow">&#8250;</div>
+          <div class="pc-icon-wrapper" style="--c: #2dd4bf;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 20h20M5 20V8l5 4V4l4 4h4v12"/></svg></div>
+          <span class="pc-title">Industrial</span>
         </button>
 
         <button class="profile-card" data-profile="aquaculture" aria-pressed="false" onclick="selectProfile(this,'aquaculture')">
-          <div class="pc-badge" style="--badge-color: var(--violet)">AQ</div>
-          <div class="pc-body">
-            <div class="pc-name">Aquaculture</div>
-            <div class="pc-std">CPCB · FAO AP&amp;H Paper 68</div>
-          </div>
-          <div class="pc-arrow">&#8250;</div>
+          <div class="pc-icon-wrapper" style="--c: #0ea5e9;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 16s3-4 6-4 5 6 8 6 6-6 6-6M2 10s3-4 6-4 5 6 8 6 6-6 6-6"/></svg></div>
+          <span class="pc-title">Aquaculture</span>
         </button>
-
       </div>
-    </section>
+    </div>
 
-    <!-- Workspace -->
-    <div class="workspace">
+    <!-- CELL 3: Inputs -->
+    <div class="bento-cell cell-inputs stagger-3">
+      <div class="mode-tabs" role="tablist">
+        <button class="mode-tab active" role="tab" aria-selected="true" data-tab="llm" onclick="switchTab(this,'llm')">BLUE AI</button>
+        <button class="mode-tab" role="tab" aria-selected="false" data-tab="manual" onclick="switchTab(this,'manual')">Manual</button>
+        <button class="mode-tab" role="tab" aria-selected="false" data-tab="csv" onclick="switchTab(this,'csv')">CSV Batch</button>
+      </div>
 
-      <!-- ── Input Panel ── -->
-      <section class="input-panel" aria-label="Sample input">
-
-        <!-- Mode tabs -->
-        <div class="mode-tabs" role="tablist">
-          <button class="mode-tab active mode-tab--powered" role="tab" aria-selected="true"  data-tab="llm"    onclick="switchTab(this,'llm')">
-            <span class="mode-tab-dot" aria-hidden="true"></span>
-            <span>BLUE AI powered by Llama 3.3 70B on Groq</span>
-            </button>
-          <button class="mode-tab"        role="tab" aria-selected="false" data-tab="manual" onclick="switchTab(this,'manual')">Manual Entry</button>
-          <button class="mode-tab"        role="tab" aria-selected="false" data-tab="csv"    onclick="switchTab(this,'csv')">CSV Upload</button>
-        </div>
-
-        <!-- LLM Tab -->
+      <div class="tab-content">
+        <!-- LLM TAB -->
         <div class="tab-pane active" id="tab-llm" role="tabpanel">
           <div class="chat-window" id="chatWindow" aria-live="polite">
             <div class="msg msg--bot">
-              Describe your water sample — source type, location, observed characteristics, or paste raw readings. BLUE AI will extract the relevant parameters and prepare them for WQI analysis.
+              <div class="msg-avatar"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg></div>
+              <div class="msg-content">Describe your water sample or paste lab readings.</div>
             </div>
           </div>
-          <div class="chat-row">
-            <input
-              class="chat-input"
-              id="chatInput"
-              type="text"
-              autocomplete="off"
-              placeholder="e.g. Borewell sample, slightly turbid, pH around 7.2..."
-              aria-label="Describe your water sample"
-              onkeydown="if(event.key==='Enter') sendChat()"
-            >
-            <button class="btn-send" onclick="sendChat()" aria-label="Send message">Send</button>
+          <div class="chat-input-wrapper">
+            <input class="chat-input" id="chatInput" type="text" autocomplete="off" placeholder="e.g. pH is 7.2, TDS is 450..." onkeydown="if(event.key==='Enter') sendChat()">
+            <button class="btn-send" onclick="sendChat()" aria-label="Send">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+            </button>
           </div>
-          <button class="btn-analyze" id="cta-llm" onclick="runAnalysis()">Run Analysis</button>
+          <button class="btn-primary btn-analyze" id="cta-llm" onclick="runAnalysis()">Run Analysis Engine</button>
         </div>
 
-        <!-- Manual Tab -->
+        <!-- MANUAL TAB -->
         <div class="tab-pane" id="tab-manual" role="tabpanel">
-          <div class="params-grid" id="paramsGrid" aria-label="Parameter inputs"></div>
-          <button class="btn-analyze" id="cta-manual" onclick="runAnalysis()">Run Analysis</button>
+          <div class="params-grid-wrapper">
+            <div class="params-grid" id="paramsGrid"></div>
+          </div>
+          <button class="btn-primary btn-analyze" id="cta-manual" onclick="runAnalysis()">Run Analysis Engine</button>
         </div>
 
-        <!-- CSV Tab -->
+        <!-- CSV TAB -->
         <div class="tab-pane" id="tab-csv" role="tabpanel">
-          <div
-            class="dropzone"
-            id="dropzone"
-            tabindex="0"
-            role="button"
-            aria-label="Upload CSV file"
-            onclick="document.getElementById('fileInput').click()"
-            ondragover="event.preventDefault(); this.classList.add('dropzone--over')"
-            ondragleave="this.classList.remove('dropzone--over')"
-            ondrop="onDrop(event)"
-            onkeydown="if(event.key==='Enter'||event.key===' ') document.getElementById('fileInput').click()"
-          >
-            <div class="dz-icon">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                <polyline points="14 2 14 8 20 8"/>
-                <line x1="12" y1="18" x2="12" y2="12"/>
-                <polyline points="9 15 12 12 15 15"/>
-              </svg>
+          <div class="dropzone" id="dropzone" tabindex="0" role="button" onclick="document.getElementById('fileInput').click()" ondragover="event.preventDefault(); this.classList.add('dropzone--over')" ondragleave="this.classList.remove('dropzone--over')" ondrop="onDrop(event)">
+            <div class="dz-icon-wrap">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 12 15 15"/></svg>
             </div>
-            <p class="dz-title">Drop CSV file here</p>
-            <p class="dz-sub">or click to browse &mdash; supports multi-sample batch mode</p>
+            <h3>Upload CSV Dataset</h3>
+            <p>Drag & drop or click to browse files.</p>
             <input type="file" id="fileInput" accept=".csv" style="display:none" onchange="onFile(this.files[0])">
           </div>
-
           <div class="csv-loaded" id="csvLoaded" hidden></div>
-
-          <div class="csv-format">
-            <p class="csv-format-label">Expected Format</p>
-            <pre class="csv-format-pre">sample_id, pH, TDS, Turbidity, Hardness, ...
-S001, 7.2, 450, 3.1, 220, ...
-S002, 6.8, 620, 5.8, 310, ...</pre>
-          </div>
-
-          <button class="btn-analyze" id="cta-csv" onclick="runAnalysis()">Run Batch Analysis</button>
+          <button class="btn-primary btn-analyze" id="cta-csv" onclick="runAnalysis()">Run Batch Analysis</button>
         </div>
+      </div>
+    </div>
 
-      </section>
-
-      <!-- ── Results Panel ── -->
-      <section class="results-panel" aria-label="Analysis results" aria-live="polite">
-
-        <!-- Placeholder -->
-        <div class="r-placeholder" id="rPlaceholder">
-          <div class="r-placeholder-inner">
-            <div class="ph-graphic">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" opacity="0.3">
-                <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
-              </svg>
-            </div>
-            <p class="ph-title">No Results Yet</p>
-            <p class="ph-sub">Select a profile, configure your sample, and run the analysis engine.</p>
-          </div>
+    <!-- CELL 4: Results Area -->
+    <div class="cell-results-wrapper stagger-4">
+      
+      <!-- Placeholder -->
+      <div class="bento-cell" id="rPlaceholder">
+        <div class="r-placeholder-content">
+          <svg class="cube-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+          <h3>Awaiting Input</h3>
+          <p>Select a profile and provide data.</p>
         </div>
+      </div>
 
-        <!-- Results (revealed after analysis) -->
-        <div id="rResults" hidden>
-
-          <!-- WQI Score Card -->
-          <div class="r-card r-card--score">
-            <p class="r-card-label">WQI Score &mdash; <span id="rProfileName">—</span></p>
-            <div class="wqi-display">
-              <span class="wqi-number" id="wqiNumber">0</span>
-              <span class="wqi-denom">/ 100</span>
+      <!-- Actual Results Bento -->
+      <div id="rResults" hidden>
+        <div class="bento-cell inner-wqi">
+          <div class="r-header-mini">
+            <h4>WQI Score</h4>
+            <span class="r-profile-badge" id="rProfileName">Profile</span>
+          </div>
+          <div class="wqi-val-wrap">
+            <span class="wqi-number" id="wqiNumber">0</span><span class="wqi-denom">/100</span>
+          </div>
+          <div class="zone-pill" id="zonePill">UNKNOWN</div>
+          
+          <div class="zone-bar-container">
+            <div class="zone-bar">
+              <div class="zone-seg zone-seg--ideal" id="zsIdeal"></div>
+              <div class="zone-seg zone-seg--acceptable" id="zsAcceptable"></div>
+              <div class="zone-seg zone-seg--permissible" id="zsPermissible"></div>
+              <div class="zone-seg zone-seg--breach" id="zsBreach"></div>
+              <div class="zone-seg zone-seg--deficient" id="zsDeficient"></div>
             </div>
-            <div class="zone-pill" id="zonePill">—</div>
-            <div class="zone-spectrum">
-              <div class="zone-bar">
-                <div class="zone-seg zone-seg--ideal"       id="zsIdeal"></div>
-                <div class="zone-seg zone-seg--acceptable"  id="zsAcceptable"></div>
-                <div class="zone-seg zone-seg--permissible" id="zsPermissible"></div>
-                <div class="zone-seg zone-seg--breach"      id="zsBreach"></div>
-                <div class="zone-seg zone-seg--deficient"   id="zsDeficient"></div>
-              </div>
-              <div class="zone-bar-labels">
-                <span>Ideal</span>
-                <span>Acceptable</span>
-                <span>Permissible</span>
-                <span>Breach</span>
-                <span>Deficient</span>
-              </div>
+            <div class="zone-labels">
+              <span>Ideal</span><span>Deficient</span>
             </div>
           </div>
-
-          <!-- Parameter Breakdown -->
-          <div class="r-card">
-            <p class="r-card-label">Parameter Breakdown</p>
-            <div id="breakdown"></div>
-          </div>
-
-          <!-- Confidence -->
-          <div class="r-card">
-            <p class="r-card-label">Confidence Details</p>
-            <div id="confidenceDetails"></div>
-          </div>
-
-          <!-- Flags -->
-          <div class="r-card">
-            <p class="r-card-label">Flags &amp; Warnings</p>
-            <div id="flagsList"></div>
-          </div>
-
-          <!-- Download -->
-          <button class="btn-download" onclick="downloadReport()">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-              <polyline points="7 10 12 15 17 10"/>
-              <line x1="12" y1="15" x2="12" y2="3"/>
-            </svg>
-            Download Full Report
-          </button>
-
         </div>
 
-      </section>
+        <div class="bento-cell inner-flags">
+          <h4>Diagnostics</h4>
+          <div class="flags-box" id="flagsList"></div>
+          
+          <h4 style="margin-top: 16px;">Engine Confidence</h4>
+          <div class="confidence-box" id="confidenceDetails"></div>
+        </div>
 
-    </div><!-- /workspace -->
+        <div class="bento-cell inner-breakdown">
+          <div class="breakdown-header">
+            <h4>Parameter Breakdown</h4>
+            <button class="btn-icon" onclick="downloadReport()" title="Download PDF">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            </button>
+          </div>
+          <div class="breakdown-list" id="breakdown"></div>
+        </div>
+      </div>
 
+    </div>
   </main>
+
+  <svg style="width:0;height:0;position:absolute;">
+    <defs>
+      <linearGradient id="cyan-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#00f2fe" />
+        <stop offset="100%" stop-color="#4facfe" />
+      </linearGradient>
+    </defs>
+  </svg>
 
   <script src="app.js"></script>
 </body>
